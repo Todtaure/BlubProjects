@@ -5,9 +5,9 @@
 using namespace std;
 
 extern "C"{
-	Calc::Calculator __declspec(dllexport) * Calc::CreateCalculator(double x, double y)
+	Calc::Calculator __declspec(dllexport) * Calc::CreateCalculator()
 	{
-		return new Calculator(x, y);
+		return new Calculator();
 	}
 
 	void __declspec(dllexport) Calc::DisposeCalculator(Calculator* ptrObject)
@@ -19,8 +19,8 @@ extern "C"{
 		}
 	}
 
-	double __declspec(dllexport) Calc::CalculatorAdd(Calculator* ptrObject)
+	double __declspec(dllexport) Calc::CalculatorAdd(Calculator* ptrObject, double x, double y)
 	{
-		return ptrObject->Add();
+		return ptrObject->Add(x, y);
 	}
 }

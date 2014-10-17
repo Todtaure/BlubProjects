@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace ConsoleTester
 {
@@ -20,9 +17,10 @@ namespace ConsoleTester
                 Console.WriteLine("Subtract: " + Subtract(20, 5.55));
                 Console.WriteLine("Multiply: " + Multiply(2, 6.6));
 
-                var testCalc = CreateCalculator(15, 6.15);
-                Console.WriteLine("Calculator Class add: " + CalculatorAdd(testCalc));
+                var testCalc = CreateCalculator();
+                Console.WriteLine("Calculator Class add: " + CalculatorAdd(testCalc, 15, 6.15));
                 DisposeCalculator(testCalc);
+                testCalc = IntPtr.Zero;
 
                 Console.Write("> ");
                 userInput = Console.ReadLine();
@@ -42,14 +40,14 @@ namespace ConsoleTester
         public static extern double Multiply(double a, double b);
 
         //Class methods
-        [DllImport("MathFuncDLL.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr CreateCalculator(double x, double y);
+        [DllImport("MathFuncDLL.dll", CallingConvention = CallingConvention.StdCall)]
+        public static extern IntPtr CreateCalculator();
 
         [DllImport("MathFuncDLL.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void DisposeCalculator(IntPtr ptr);
 
         [DllImport("MathFuncDLL.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern double CalculatorAdd(IntPtr ptr);
+        public static extern double CalculatorAdd(IntPtr ptr, double x, double y);
 
         #endregion dll Imports
     }

@@ -20,20 +20,19 @@ extern "C"{
 	}
 }
 
+//C++ class with C bridge
 namespace Calc
 {
-		Calculator::Calculator(double x, double y)
+		Calculator::Calculator()
 		{
-			_x = x;
-			_y = y;
 		}
 
 		Calculator::~Calculator()
 		{
 		}
 
-		double Calculator::Add()
+		double Calculator::Add(double x, double y)
 		{
-			return _x + _y;
+			return x + y;
 		}
 }

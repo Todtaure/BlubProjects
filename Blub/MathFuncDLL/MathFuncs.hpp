@@ -4,9 +4,9 @@ namespace Calc{
 	class Calculator
 	{
 	public:
-		Calculator(double x, double y);
+		Calculator();
 		~Calculator();
-		double Add();
+		double Add(double x, double y);
 
 	private:
 		double _x;
