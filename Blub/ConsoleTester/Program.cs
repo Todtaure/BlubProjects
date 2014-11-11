@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using NLog;
 
 
 namespace ConsoleTester
@@ -8,6 +9,8 @@ namespace ConsoleTester
     {
         static void Main(string[] args)
         {
+            var logger = LogManager.GetCurrentClassLogger();
+
             var userInput = "";
             Console.WriteLine("Console Tester. Proceed as planned.\n");
 
@@ -18,9 +21,12 @@ namespace ConsoleTester
                 Console.WriteLine("Multiply: " + Multiply(2, 6.6));
 
                 var testCalc = CreateCalculator();
+                Console.WriteLine("Ptr: " + testCalc);
                 Console.WriteLine("Calculator Class add: " + CalculatorAdd(testCalc, 15, 6.15));
                 DisposeCalculator(testCalc);
+                
                 testCalc = IntPtr.Zero;
+                Console.WriteLine("Ptr (set 0): " + testCalc);
 
                 Console.Write("> ");
                 userInput = Console.ReadLine();
