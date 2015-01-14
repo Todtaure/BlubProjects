@@ -1,27 +1,29 @@
 ﻿using System;
+using System.Net.Mime;
 using System.Runtime.InteropServices;
-using NLog;
-
+using System.Runtime.Remoting.Messaging;
 
 namespace ConsoleTester
 {
-    class Program
+    static class Program
     {
         static void Main(string[] args)
         {
-            var userInput = "";
             Console.WriteLine("Console Tester. Proceed as planned.\n");
 
-            while (userInput != "exit")
+            while (true)
             {
-                RunExtensionTest.Run(4,5);
+                ExtensionTest.Run(4,5);
 
                 Console.WriteLine("To rerun, press enter.");
                 Console.Write("> ");
-                userInput = Console.ReadLine();
+
+                var userInput = Console.ReadKey();
+                if (userInput.Key == ConsoleKey.X)
+                {
+                    return;
+                }
             }
         }
-       
     }
-
 }

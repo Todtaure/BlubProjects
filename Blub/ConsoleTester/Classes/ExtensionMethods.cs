@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleTester
 {
-    public static class RunExtensionTest
+    public static class ExtensionTest
     {
         public static void Run(int left, int right)
         {
