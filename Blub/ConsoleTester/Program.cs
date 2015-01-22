@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Net.Mime;
-using System.Runtime.InteropServices;
-using System.Runtime.Remoting.Messaging;
+using ConsoleTester.Classes;
 
 namespace ConsoleTester
 {
@@ -13,7 +11,7 @@ namespace ConsoleTester
 
             while (true)
             {
-                ExtensionTest.Run(4,5);
+                ExtensionTest.Run(4,5, "This is a test sentence, containing some´ different symbols: like a . or a / and ?.");
 
                 Console.WriteLine("To rerun, press enter.");
                 Console.Write("> ");
